@@ -45,6 +45,7 @@ function sb_render_booking_form()
 ?>
     <div id="sb-booking-wrap">
         <form id="sb-booking-form" enctype="multipart/form-data">
+            <div id="sb-message" style="display:none;"></div>
             <!-- Step 1 -->
             <div class="sb-step" data-step="1">
                 <h3>Customer Information</h3>
@@ -97,7 +98,6 @@ function sb_render_booking_form()
                 <button type="submit" id="sb-submit" style="display:none;">Submit</button>
             </div>
 
-            <div id="sb-message" style="display:none;"></div>
         </form>
     </div>
 <?php

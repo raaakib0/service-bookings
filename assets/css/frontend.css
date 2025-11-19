@@ -25,15 +25,19 @@
     box-sizing: border-box;
     margin-top: 4px;
 }
-.sb-step input:focus, .sb-step select:focus, .sb-step textarea:focus {
+
+.sb-step input:focus,
+.sb-step select:focus,
+.sb-step textarea:focus {
     border-color: #0073aa;
     outline: none;
-    box-shadow: 0 0 5px rgba(0,115,170,0.5);
+    box-shadow: 0 0 5px rgba(0, 115, 170, 0.5);
 }
 
 .sb-navigation {
     margin-top: 10px;
 }
+
 .sb-navigation button {
     background-color: #0073aa;
     color: #fff;
@@ -43,11 +47,13 @@
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
 .sb-navigation button:hover {
     background-color: #005177;
 }
 
 #sb-message.sb-success {
+    text-align: center;
     color: green;
     margin-top: 10px;
 }
@@ -60,6 +66,7 @@
 .sb-error {
     border-color: red !important;
 }
+
 .custom-file-upload {
     display: flex;
     align-items: center;
@@ -80,7 +87,8 @@
 }
 
 .custom-file-upload input[type="file"] {
-    display: none; /* Hide default file input */
+    display: none;
+    /* Hide default file input */
 }
 
 #file-name {
