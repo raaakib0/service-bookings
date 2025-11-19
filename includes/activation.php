@@ -1,12 +1,13 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (! defined('ABSPATH')) exit;
 
-function sb_activate_plugin() {
-    global $wpdb;
-    $table_name = $wpdb->prefix . 'service_bookings';
-    $charset_collate = $wpdb->get_charset_collate();
+function sb_activate_plugin()
+{
+  global $wpdb;
+  $table_name = $wpdb->prefix . 'service_bookings';
+  $charset_collate = $wpdb->get_charset_collate();
 
-    $sql = "CREATE TABLE IF NOT EXISTS {$table_name} (
+  $sql = "CREATE TABLE IF NOT EXISTS {$table_name} (
       id BIGINT(20) NOT NULL AUTO_INCREMENT,
       name VARCHAR(191) NOT NULL,
       email VARCHAR(191) NOT NULL,
@@ -24,6 +25,6 @@ function sb_activate_plugin() {
       PRIMARY KEY (id)
     ) {$charset_collate};";
 
-    require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-    dbDelta( $sql );
+  require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+  dbDelta($sql);
 }

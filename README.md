@@ -16,7 +16,7 @@ A custom WordPress plugin that provides a secure, responsive 3-step service book
 - Custom database table (`wp_service_bookings`) created on plugin activation
 - Admin dashboard page to view all bookings
 - Responsive UI & shortcode support:  
-[service_booking_form]
+  [service_booking_form]
 
 ## Plugin Structure
 
@@ -32,12 +32,11 @@ service-bookings/
 ├─ css/style.css # Form styles
 └─ js/frontend.js # Multi-step form + AJAX logic
 
-
 ---
 
 ## 🔧 Installation
 
-1. Download and zip the `service-bookings` folder  
+1. Download and zip the `service-bookings` folder
 2. Go to: **WordPress Admin → Plugins → Add New → Upload Plugin**
 3. Upload the ZIP file and **Activate Plugin**
 4. Database table will be auto-created
@@ -62,7 +61,7 @@ Admin can view submitted bookings from:
 ✔ Sanitized + validated data  
 ✔ Nonce verification for AJAX  
 ✔ Secure database insert using `$wpdb`  
-✔ Secure file uploads with `wp_handle_upload()`  
+✔ Secure file uploads with `wp_handle_upload()`
 
 ---
 
@@ -80,4 +79,4 @@ Admin can view submitted bookings from:
 
 ---
 
-If you like this project, feel free to improve or fork it! 
+If you like this project, feel free to improve or fork it!

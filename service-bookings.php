@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: Service Bookings
  * Description: Simple multi-step service booking plugin (custom table + admin list + frontend form).
@@ -7,13 +8,13 @@
  * Text Domain: service-bookings
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
     exit;
 }
 
-define( 'SB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'SB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'SB_VERSION', '1.0.0' );
+define('SB_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('SB_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('SB_VERSION', '1.0.0');
 
 // Includes
 require_once SB_PLUGIN_DIR . 'includes/activation.php';
@@ -21,25 +22,27 @@ require_once SB_PLUGIN_DIR . 'includes/handlers.php';
 require_once SB_PLUGIN_DIR . 'admin/admin-page.php';
 
 // Activation hook (creates table)
-register_activation_hook( __FILE__, 'sb_activate_plugin' );
+register_activation_hook(__FILE__, 'sb_activate_plugin');
 
 // Enqueue scripts & styles (frontend)
-add_action( 'wp_enqueue_scripts', 'sb_enqueue_frontend_assets' );
-function sb_enqueue_frontend_assets() {
-    wp_enqueue_style( 'sb-frontend-css', SB_PLUGIN_URL . 'assets/css/frontend.css', array(), SB_VERSION );
-    wp_enqueue_script( 'sb-frontend-js', SB_PLUGIN_URL . 'assets/js/frontend.js', array('jquery'), SB_VERSION, true );
+add_action('wp_enqueue_scripts', 'sb_enqueue_frontend_assets');
+function sb_enqueue_frontend_assets()
+{
+    wp_enqueue_style('sb-frontend-css', SB_PLUGIN_URL . 'assets/css/frontend.css', array(), SB_VERSION);
+    wp_enqueue_script('sb-frontend-js', SB_PLUGIN_URL . 'assets/js/frontend.js', array('jquery'), SB_VERSION, true);
 
-    wp_localize_script( 'sb-frontend-js', 'sb_ajax', array(
-        'ajax_url' => admin_url( 'admin-ajax.php' ),
-        'nonce'    => wp_create_nonce( 'sb_submit_nonce' ),
-    ) );
+    wp_localize_script('sb-frontend-js', 'sb_ajax', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('sb_submit_nonce'),
+    ));
 }
 
 // Shortcode to display form
-add_shortcode( 'service_booking_form', 'sb_render_booking_form' );
-function sb_render_booking_form() {
+add_shortcode('service_booking_form', 'sb_render_booking_form');
+function sb_render_booking_form()
+{
     ob_start();
-    ?>
+?>
     <div id="sb-booking-wrap">
         <form id="sb-booking-form" enctype="multipart/form-data">
             <!-- Step 1 -->
@@ -60,7 +63,7 @@ function sb_render_booking_form() {
             <div class="sb-step" data-step="2" style="display:none;">
                 <h3>Service Details</h3>
                 <label>Service Type
-                   <select name="service_type" required>
+                    <select name="service_type" required>
                         <option value="display">Display Problem</option>
                         <option value="camera">Camera Problem</option>
                         <option value="network">Network Problem</option>
@@ -95,6 +98,6 @@ function sb_render_booking_form() {
             <div id="sb-message" style="display:none;"></div>
         </form>
     </div>
-    <?php
+<?php
     return ob_get_clean();
 }

@@ -1,12 +1,13 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+if (! defined('ABSPATH')) exit;
 
-add_action( 'wp_ajax_sb_submit_booking', 'sb_submit_booking' );
-add_action( 'wp_ajax_nopriv_sb_submit_booking', 'sb_submit_booking' );
+add_action('wp_ajax_sb_submit_booking', 'sb_submit_booking');
+add_action('wp_ajax_nopriv_sb_submit_booking', 'sb_submit_booking');
 
-function sb_submit_booking() {
-    if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field($_POST['nonce']), 'sb_submit_nonce' ) ) {
-        wp_send_json_error( 'Security check failed', 403 );
+function sb_submit_booking()
+{
+    if (! isset($_POST['nonce']) || ! wp_verify_nonce(sanitize_text_field($_POST['nonce']), 'sb_submit_nonce')) {
+        wp_send_json_error('Security check failed', 403);
     }
 
     // Basic validation/sanitization
@@ -23,30 +24,30 @@ function sb_submit_booking() {
     $notes = isset($_POST['notes']) ? sanitize_textarea_field($_POST['notes']) : '';
 
     // Validate required fields
-    if ( empty($name) || empty($email) || ! is_email($email) ) {
-        wp_send_json_error( 'Please provide a valid name and email.' );
+    if (empty($name) || empty($email) || ! is_email($email)) {
+        wp_send_json_error('Please provide a valid name and email.');
     }
 
     // Handle file upload if exists
     $attachment_url = null;
-    if ( ! empty( $_FILES['attachment']['name'] ) ) {
+    if (! empty($_FILES['attachment']['name'])) {
         require_once ABSPATH . 'wp-admin/includes/file.php';
         require_once ABSPATH . 'wp-admin/includes/image.php';
         require_once ABSPATH . 'wp-admin/includes/media.php';
 
         $file = $_FILES['attachment'];
         // Allowed types
-        $allowed = array( 'jpg','jpeg','png','pdf' );
-        $ext = pathinfo( $file['name'], PATHINFO_EXTENSION );
-        if ( ! in_array( strtolower($ext), $allowed, true ) ) {
-            wp_send_json_error( 'Invalid file type. Allowed: jpg, jpeg, png, pdf.' );
+        $allowed = array('jpg', 'jpeg', 'png', 'pdf');
+        $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+        if (! in_array(strtolower($ext), $allowed, true)) {
+            wp_send_json_error('Invalid file type. Allowed: jpg, jpeg, png, pdf.');
         }
 
-        $upload = wp_handle_upload( $file, array( 'test_form' => false ) );
-        if ( isset( $upload['error'] ) ) {
-            wp_send_json_error( 'File upload error: ' . esc_html( $upload['error'] ) );
+        $upload = wp_handle_upload($file, array('test_form' => false));
+        if (isset($upload['error'])) {
+            wp_send_json_error('File upload error: ' . esc_html($upload['error']));
         }
-        $attachment_url = esc_url_raw( $upload['url'] );
+        $attachment_url = esc_url_raw($upload['url']);
     }
 
     global $wpdb;
@@ -65,16 +66,16 @@ function sb_submit_booking() {
         'city' => $city,
         'address' => $address,
         'notes' => $notes,
-        'created_at' => current_time( 'mysql' )
+        'created_at' => current_time('mysql')
     );
 
     $format = array_fill(0, count($data), '%s');
 
-    $inserted = $wpdb->insert( $table, $data, $format );
+    $inserted = $wpdb->insert($table, $data, $format);
 
-    if ( $inserted ) {
-        wp_send_json_success( 'Booking submitted successfully.' );
+    if ($inserted) {
+        wp_send_json_success('Booking submitted successfully.');
     } else {
-        wp_send_json_error( 'Database error. Please try again.' );
+        wp_send_json_error('Database error. Please try again.');
     }
 }
