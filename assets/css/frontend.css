@@ -1,0 +1,11 @@
+#sb-booking-wrap { max-width:720px; margin:0 auto; padding:15px; border:1px solid #eee; background:#fff; }
+.sb-step { margin-bottom:15px; }
+.sb-step label { display:block; margin-bottom:8px; }
+.sb-step input[type="text"], .sb-step input[type="email"], .sb-step input[type="date"], .sb-step textarea, .sb-step select {
+    width:100%; padding:8px; box-sizing:border-box; margin-top:4px;
+}
+.sb-navigation { margin-top:10px; }
+#sb-message.sb-success { color:green; margin-top:10px; }
+#sb-message.sb-error { color:red; margin-top:10px; }
+.sb-error { border-color: red !important; }
+@media (max-width:600px){ #sb-booking-wrap { padding:10px; } }
