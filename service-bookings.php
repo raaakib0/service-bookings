@@ -72,8 +72,10 @@ function sb_render_booking_form()
                 <label>Service Description
                     <textarea name="service_description" required></textarea>
                 </label>
-                <label>Optional File Upload
-                    <input type="file" name="attachment" accept=".jpg,.jpeg,.png,.pdf">
+                <label class="custom-file-upload">
+                    File Upload (Optional)
+                    <input type="file" name="attachment" id="attachment" accept=".jpg,.jpeg,.png,.pdf">
+                    <span id="file-name">No file chosen</span>
                 </label>
                 <label>Preferred Service Date
                     <input type="date" name="service_date" required>

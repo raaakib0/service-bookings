@@ -26,7 +26,7 @@ jQuery(document).ready(function ($) {
         if (!valid) {
             alert('Please fill required fields in this step.');
             const firstInvalid = $('.sb-step[data-step="' + currentStep + '"] .sb-error').first();
-            $('html, body').animate({ scrollTop: firstInvalid.offset().top - 20 }, 300);
+            $('html, body').animate({ scrollTop: firstInvalid.offset().top - 80 }, 300);
             return;
         }
         currentStep++;
@@ -75,4 +75,9 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+});
+
+document.getElementById('attachment').addEventListener('change', function () {
+    const fileName = this.files.length > 0 ? this.files[0].name : 'No file chosen';
+    document.getElementById('file-name').textContent = fileName;
 });
