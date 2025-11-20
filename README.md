@@ -4,7 +4,7 @@ A custom WordPress plugin that provides a secure, responsive 3-step service book
 
 ---
 
-## ✨ Features
+## Features
 
 - Multi-step (3 steps) booking form:
   - **Step 1:** Customer Information
@@ -15,14 +15,13 @@ A custom WordPress plugin that provides a secure, responsive 3-step service book
 - Secure file uploads using WordPress APIs
 - Custom database table (`wp_service_bookings`) created on plugin activation
 - Admin dashboard page to view all bookings
-- Responsive UI & shortcode support:  
-  [service_booking_form]
+- Responsive UI & shortcode support: [service_booking_form]
 
 ## Plugin Structure
 
 service-bookings/
 ├─ service-bookings.php # Main plugin file (shortcode + scripts)
-├─ readme.txt # WordPress plugin directory info (optional)
+├─ readme.txt # WordPress plugin how to install the plugin
 ├─ README.md # Documentation for developers
 ├─ includes/
 │ ├─ activation.php # Database table creation on activation
@@ -34,20 +33,20 @@ service-bookings/
 
 ---
 
-## 🔧 Installation
+## Installation
 
-1. Download and zip the `service-bookings` folder
+1. Download the `service-bookings` ziped folder
 2. Go to: **WordPress Admin → Plugins → Add New → Upload Plugin**
 3. Upload the ZIP file and **Activate Plugin**
 4. Database table will be auto-created
 
 ---
 
-## 🚀 Usage
+## Usage
 
-Add the form to any page/post:
+Add the form (shortcode) to any page/post:
 
-[service_booking_form]
+shortcode: [service_booking_form]
 
 Admin can view submitted bookings from:
 
@@ -56,7 +55,7 @@ Admin can view submitted bookings from:
 
 ---
 
-## 🔐 Security
+## Security
 
 ✔ Sanitized + validated data  
 ✔ Nonce verification for AJAX  
@@ -65,17 +64,16 @@ Admin can view submitted bookings from:
 
 ---
 
-## 📌 Notes
+## Notes
 
 - Upload files stored inside WordPress uploads directory
-- You may extend the admin page (filters, pagination, CSV export, edit view)
 
 ---
 
-## 👨‍💻 Developer
+## Developer
 
 **Rakib**  
-📧 Email: raaakib0@gmail.com
+Email: raaakib0@gmail.com
 
 ---
 

@@ -1,5 +1,5 @@
 === Service Bookings Plugin ===
-Contributors: Rakibul
+Contributors: Md. Rakibul Islam
 Tags: service booking, form, appointment, booking, custom form
 Requires at least: 5.0
 Tested up to: 6.7
@@ -27,8 +27,7 @@ This plugin provides a 3-step service booking form using a shortcode. All submit
 3. On activation, the plugin will automatically create the required database table
 
 == Usage ==
-Add the form to any page or post using this shortcode:
-[service_booking_form]
+Add the form (shortcode) to any page or post using this shortcode: [service_booking_form]
 
 A new admin page will appear in WordPress Admin:
 
